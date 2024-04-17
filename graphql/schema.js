@@ -5,6 +5,9 @@ const typeDefs = gql`
     id: ID!
     username: String!
     role: String!
+    email: String!  # Add this line to include the email field
+    age: Int!       # Add this line to include the age field
+    gender: String! # Add this line to include the gender field
   }
 
   type VitalSigns {
@@ -30,7 +33,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    signUp(username: String!, password: String!, role: String!): AuthPayload
+    signUp(username: String!, password: String!, role: String!, email: String!, age: Int!, gender: String!): AuthPayload
     signIn(username: String!, password: String!): AuthPayload
     addVitalSigns(patientId: ID!, bodyTemperature: Float!, heartRate: Float!, bloodPressure: String!, respiratoryRate: Float!): VitalSigns
   }

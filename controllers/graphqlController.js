@@ -7,10 +7,10 @@ const resolvers = {
         getUserVitals: (_, { userId }) => VitalSigns.find({ userId })
     },
     Mutation: {
-        addUser: async (_, { username, password, role }) => {
-            const newUser = new User({ username, password, role });
+        addUser: async (_, { username, password, role, email, age, gender }) => {
+            const newUser = new User({ username, password, role, email, age, gender });
             return await newUser.save();
-        },
+        },        
         addVitalSigns: async (_, { userId, bodyTemperature, heartRate, bloodPressure, respiratoryRate }) => {
             const newVitalSigns = new VitalSigns({
                 userId, bodyTemperature, heartRate, bloodPressure, respiratoryRate

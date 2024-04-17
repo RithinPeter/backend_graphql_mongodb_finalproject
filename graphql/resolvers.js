@@ -37,14 +37,11 @@ const resolvers = {
     },
   },
   Mutation: {
-    signUp: async (_, { username, password, role }) => {
-      // Create a new user instance
-      const user = await User.create({ username, password, role });
-      // Generate JWT token
+    signUp: async (_, { username, password, role, email, age, gender }) => {
+      const user = await User.create({ username, password, role, email, age, gender });
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
-      // Return token and user data
       return { token, user };
-    },
+    },   
     signIn: async (_, { username, password }) => {
       // Find the user by username
       const user = await User.findOne({ username });
